@@ -15,6 +15,8 @@ import {
   BsFillHouseDoorFill,
 } from "react-icons/bs";
 
+import { FiLogOut } from "react-icons/fi";
+
 const variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { ease: "easeInOut" } },
@@ -103,8 +105,7 @@ const Navbar = () => {
         </div>
         <div className="profile-info">
           <div className="profile-image"></div>
-          <div className="name"></div>
-          <div id="logout"></div>
+          <div className="name">User Name</div>
         </div>
       </div>
     </div>

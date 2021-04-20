@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+
 //Components
 import PostListItem from "../PostListItem";
 
@@ -259,6 +260,15 @@ const fakePosts = [
   },
 ];
 
+const variantsContainer = {
+  hidden: { height: "90vh" },
+  visible: {
+    height: "60vh",
+    transition: { ease: "easeInOut", when: "beforeChildren" },
+  },
+  exit: { height: "90vh" },
+};
+
 const Home = () => {
   const [filterLimit, setFilterLimit] = useState(4);
 
@@ -267,7 +277,14 @@ const Home = () => {
   };
 
   return (
-    <div id="home" className="section">
+    <motion.div
+      variants={variantsContainer}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      id="home"
+      className="section"
+    >
       <div className="container">
         <h2 className="section-title">Post List</h2>
         <div className="post-list">
@@ -292,7 +309,7 @@ const Home = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
