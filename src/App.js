@@ -18,8 +18,10 @@ const App = () => {
   return (
     <div>
       {/* ---- Modals ---- */}
+
       {/* View Post Modal */}
-      <AnimatePresence>{true && <ViewPostModal />}</AnimatePresence>
+      <AnimatePresence>{false && <ViewPostModal />}</AnimatePresence>
+
       {/* Add Post Modal */}
       <AnimatePresence>{false && <AddPostModal />}</AnimatePresence>
 
