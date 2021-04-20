@@ -1,7 +1,13 @@
 import React from "react";
 
-const Button = ({ text }) => {
-  return <div className="button">{text}</div>;
+const Button = ({ id, Icon, text, drop }) => {
+  return (
+    <div id={id} className="button">
+      {Icon && <Icon />}
+      {text}
+      
+    </div>
+  );
 };
 
 export default Button;

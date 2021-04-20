@@ -5,3 +5,20 @@ h1
 h3
 
 .button
+    position: relative
+    color: $grey3
+    background-color: $dark1
+    width: fit-content
+    display: flex
+    align-items: center
+    justify-content: center
+    padding: 0.5em 2em
+    font-size: 1.4em
+    border-radius: 0.25em
+    transition: all 0.4s ease
+    svg
+        margin-right: 0.25em
+
+    &:hover
+        transform: scale(1.05)
+        cursor: pointer
