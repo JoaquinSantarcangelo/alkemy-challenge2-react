@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { AnimatePresence } from "framer-motion";
 //Components
 import PostListItem from "../PostListItem";
 
@@ -260,7 +260,7 @@ const fakePosts = [
 ];
 
 const Home = () => {
-  const [filterLimit, setFilterLimit] = useState(5);
+  const [filterLimit, setFilterLimit] = useState(4);
 
   const loadMorePost = () => {
     setFilterLimit(filterLimit + 5);
@@ -271,11 +271,13 @@ const Home = () => {
       <div className="container">
         <h2 className="section-title">Post List</h2>
         <div className="post-list">
-          {fakePosts.map((post, i) => {
-            if (i < filterLimit) {
-              return <PostListItem postInfo={post} />;
-            }
-          })}
+          <AnimatePresence>
+            {fakePosts.map((post, i) => {
+              if (i < filterLimit) {
+                return <PostListItem i={i} postInfo={post} />;
+              }
+            })}
+          </AnimatePresence>
         </div>
         <div className="load-more">
           {filterLimit < fakePosts.length ? (

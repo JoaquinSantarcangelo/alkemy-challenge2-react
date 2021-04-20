@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 
 //Elements
 import Button from "../components/_elements/Button";
@@ -6,7 +7,14 @@ import Button from "../components/_elements/Button";
 //Icons
 import { BsDashCircleFill, BsPencilSquare, BsEyeFill } from "react-icons/bs";
 
-const PostListItem = ({ postInfo }) => {
+const PostListItem = ({ postInfo, i }) => {
+  //Framer Motion Variants
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { ease: "easeInOut", delay: i / 10 } },
+    exit: { opacity: 0 },
+  };
+
   //Handle Delete Post
   const handleDelete = () => {
     console.log("Handle Delete Post");
@@ -21,7 +29,13 @@ const PostListItem = ({ postInfo }) => {
   };
 
   return (
-    <div className="post-list-item">
+    <motion.div
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="post-list-item"
+    >
       <div className="title">{postInfo.title}</div>
       <div className="buttons">
         <Button
@@ -43,7 +57,7 @@ const PostListItem = ({ postInfo }) => {
           text="View"
         />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
