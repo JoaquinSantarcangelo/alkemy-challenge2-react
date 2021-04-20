@@ -1,13 +1,50 @@
 import React from "react";
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { ease: "easeInOut", delay: 0.5 } },
+  exit: { opacity: 0 },
+};
+
+const variantsContainer = {
+  hidden: { height: "10vh" },
+  visible: {
+    height: "40vh",
+    transition: { ease: "easeInOut", when: "beforeChildren" },
+  },
+  exit: { height: "20vh" },
+};
 
 const Hero = () => {
   return (
-    <div className="section" id="hero">
+    <motion.div
+      variants={variantsContainer}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      className="section"
+      id="hero"
+    >
       <div className="container">
-        <h1 className="title">Client Title</h1>
+        <motion.h1
+          variants={variants}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="title"
+        >
+          Client Title
+        </motion.h1>
       </div>
-      <div className="background-image"></div>
-    </div>
+      <motion.div
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+        className="background-image"
+      ></motion.div>
+    </motion.div>
   );
 };
 
