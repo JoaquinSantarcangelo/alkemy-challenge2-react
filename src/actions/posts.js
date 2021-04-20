@@ -1,5 +1,5 @@
 import {
-  GET_ALL_POST,
+  GET_ALL_POSTS,
   GET_POST,
   CREATE_POST,
   UPDATE_POST,
@@ -14,7 +14,7 @@ export const getAllPosts = () => async (dispatch) => {
     const res = await PostService.getAll();
 
     dispatch({
-      type: GET_ALL_POST,
+      type: GET_ALL_POSTS,
       payload: res.data,
     });
   } catch (err) {
@@ -55,7 +55,7 @@ export const updatePost = (id, data) => async (dispatch) => {
 };
 
 //Delete Post
-export const deletePost = () => async (dispatch) => {
+export const deletePost = (id) => async (dispatch) => {
   try {
     const res = await PostService.remove(id);
 

@@ -8,7 +8,7 @@ import {
 
 const initialState = [];
 
-function postReducer (posts = initialState, action) {
+function postReducer(posts = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -33,6 +33,8 @@ function postReducer (posts = initialState, action) {
     case DELETE_POST:
       return posts.filter(({ id }) => id !== payload.id);
       break;
+    default:
+      return posts;
   }
 }
 

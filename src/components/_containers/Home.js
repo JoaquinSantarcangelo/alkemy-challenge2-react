@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
-//Components
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { getAllPosts } from "../../actions/posts";
+
+// Components
 import PostListItem from "../PostListItem";
 
-//Elements
+// Elements
 import Button from "../_elements/Button";
 
-//Icons
+// Icons
 import { BsPlus } from "react-icons/bs";
 
 const fakePosts = [
@@ -263,7 +267,7 @@ const fakePosts = [
 const variantsContainer = {
   hidden: { height: "90vh" },
   visible: {
-    height: "60vh",
+    height: "fit-content",
     transition: { ease: "easeInOut", when: "beforeChildren" },
   },
   exit: { height: "90vh" },
@@ -271,10 +275,17 @@ const variantsContainer = {
 
 const Home = () => {
   const [filterLimit, setFilterLimit] = useState(4);
+  const posts = useSelector((state) => state.posts);
+  const dispatch = useDispatch();
 
   const loadMorePost = () => {
     setFilterLimit(filterLimit + 5);
   };
+
+  //Fetching Posts
+  useEffect(() => {
+    dispatch(getAllPosts());
+  }, []);
 
   return (
     <motion.div
@@ -289,7 +300,7 @@ const Home = () => {
         <h2 className="section-title">Post List</h2>
         <div className="post-list">
           <AnimatePresence>
-            {fakePosts.map((post, i) => {
+            {posts.map((post, i) => {
               if (i < filterLimit) {
                 return <PostListItem i={i} postInfo={post} />;
               }

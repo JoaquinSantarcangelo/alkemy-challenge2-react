@@ -36,7 +36,9 @@ const PostListItem = ({ postInfo, i }) => {
       exit="exit"
       className="post-list-item"
     >
-      <div className="title">{postInfo.title}</div>
+      <div className="title">
+        {postInfo.title.charAt(0).toUpperCase() + postInfo.title.slice(1)}
+      </div>
       <div className="buttons">
         <Button
           onClick={handleDelete}
