@@ -7,9 +7,22 @@
 @import "../PostForm"
 
 #home
-    height: 60vh
+    min-height: 60vh
     margin-top: 0
+    padding-bottom: 2em
     background-color: $grey3
     .container
         padding-top: 2em
+
         .post-list
+        .load-more
+            margin-top: 2em
+            display: flex
+            align-items: center
+            justify-content: center
+            .empty
+                font-size: 1.4em
+                background-color: #e2e2e2
+                padding: 1em
+                border-radius: 0.5em
+                color: $dark3

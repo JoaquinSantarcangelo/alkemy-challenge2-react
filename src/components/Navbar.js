@@ -7,7 +7,7 @@ import Dropdown from "./_elements/Dropdown";
 //Icons
 import {
   BsLightningFill,
-  BsFileEarmarkPlus,
+  BsPlus,
   BsFileEarmarkMinus,
   BsPencilSquare,
   BsEyeFill,
