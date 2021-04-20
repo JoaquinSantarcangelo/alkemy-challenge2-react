@@ -7,9 +7,9 @@ import reportWebVitals from "./reportWebVitals";
 import "./normalize.css";
 
 //Sass Files
-import "./sass/_elements.sass"
-import "./sass/index.sass"
-
+import "./sass/_elements.sass";
+import "./sass/index.sass";
+import "./sass/components/_containers/Home.sass";
 
 ReactDOM.render(
   <React.StrictMode>

@@ -10,8 +10,8 @@ import Home from "./components/_containers/Home";
 const App = () => {
   return (
     <div>
-      <Navbar/>
-      <Hero/>
+      <Navbar />
+      <Hero />
       <Home />
     </div>
   );
