@@ -24,7 +24,7 @@ const Navbar = () => {
             <div className="drop-items"></div>
           </div>
           <div className="nav-items">
-            <Button id="home-button" text="Home" Icon={BsFillHouseDoorFill} />
+            <Button alt id="home-button" text="Home" Icon={BsFillHouseDoorFill} />
           </div>
         </div>
         <div className="profile-info">
