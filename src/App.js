@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React from "react";
+import React, { useState } from "react";
 
 //Components
 import Hero from "./components/Hero";
@@ -15,6 +15,14 @@ import EnterPostIdModal from "./components/_modals/EnterPostIdModal";
 import ErrorModal from "./components/_modals/ErrorModal";
 
 const App = () => {
+  //Modals State
+  const [modals, setModals] = useState({
+    viewPost: { state: false, post: {} },
+    addPost: { state: false, post: {} },
+    enterPostId: { state: false, id: 1 },
+    error: { state: false, text: {} },
+  });
+
   return (
     <div>
       {/* ---- Modals ---- */}
