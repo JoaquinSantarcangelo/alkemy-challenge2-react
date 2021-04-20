@@ -23,8 +23,53 @@ body
 
 //Global Styles
 
+// -- Modal -- //
+.modal
+    position: fixed
+    top: 0
+    left: 0
+    z-index: 99999
+    width: 100%
+    height: 100%
+    background-color: rgba(0,0,0,0.5)
+    display: flex
+    align-items: center
+    justify-content: center
+    .card
+        background-color: #fff
+        padding: 2em
+        border-radius: 0.5em
+        position: relative
+        width: 90%
+        min-width: 30em
+        max-width: 45em
+        .button
+            margin-top: 1em
+            width: 100%
+            justify-content: center
+        .close-button
+            position: absolute
+            display: flex
+            align-items: center
+            justify-content: center
+            top: 0em
+            right: 2em
+            font-size: 1em
+            cursor: pointer
+            background-color: #000
+            border-radius: 0 0 0.25em 0.25em
+            svg
+                color: $grey3
+                font-size: 3em
+        .title
+            font-size: 1.6em
+            font-weight: 600
+
+// -- Section
 .section
     width: 100%
+
+// -- Container
 .container
     width: 90vw
     max-width: 110em
@@ -35,6 +80,20 @@ body
         width: 100%
         margin-bottom: 1em
         border-bottom: 2px solid #dddddd
+
+// -- Container Variant
 .small
     width: 80vw
     max-width: 100em
+
+//Input, TextArea
+input,
+textarea
+    padding: 1em 1.5em
+    outline: none
+    border: none
+    background-color: $grey3
+    border-radius: 0.25em
+    width: 100%
+    margin-top: 1em
+    font-size: 1.2em
