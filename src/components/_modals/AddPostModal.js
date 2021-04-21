@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
-import { createPost } from "../../actions/posts";
+import { createPost, updatePost } from "../../actions/posts";
 
 //Elements
 import Button from "../_elements/Button";
@@ -21,6 +21,14 @@ const AddPostModal = ({ modals, setModals }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const { addPost } = modals;
+
+  //Fill Inputs if action = Editing
+  useEffect(() => {
+    if (addPost.action === "edit") {
+      setTitle(addPost.post.title);
+      setText(addPost.post.body);
+    }
+  }, []);
 
   //Handle Close
   const handleClose = () => {
@@ -72,10 +80,44 @@ const AddPostModal = ({ modals, setModals }) => {
     console.log(title, text);
   };
 
+  //Handle Edit Post
+  const handleEditPost = async () => {
+    console.log("Edit Post: From AddPostModal");
+
+    //Form Validation
+    let validated = await validation();
+
+    if (validated) {
+      let editedPost = { ...addPost.post, title: title, text: text };
+      dispatch(updatePost(addPost.post.id, editedPost)).then(() => {
+        console.log("Edited Post: From dispatch callback");
+
+        //Close Modal
+        handleClose();
+
+        //Show Message
+        setModals({
+          ...modals,
+          addPost: { action: "", post: null, state: false },
+          message: {
+            state: true,
+            type: "message",
+            text: "Post edited successfully",
+          },
+        });
+      });
+    }
+    console.log(title, text);
+  };
+
   return (
     <Modal onClose={handleClose} id="add-post-modal">
       <>
-        <div className="title">Adding New Post</div>
+        <div className="title">
+          {addPost.action === "edit"
+            ? `Editing Post ID:${addPost.post.id}`
+            : "Adding New Post"}
+        </div>
         {error != "" && <div className="error">Error: {error}</div>}
         <div className="form">
           <input
@@ -91,7 +133,13 @@ const AddPostModal = ({ modals, setModals }) => {
             placeholder="Text"
             id="new-post-text"
           />
-          <Button onClick={handleAddPost} Icon={RiCheckFill} text="Add Post" />
+          <Button
+            onClick={
+              addPost.action === "editing" ? handleAddPost : handleEditPost
+            }
+            Icon={RiCheckFill}
+            text={addPost.action === "editing" ? "Add Post" : "Edit Post"}
+          />
         </div>
       </>
     </Modal>

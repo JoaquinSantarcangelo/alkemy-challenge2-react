@@ -63,6 +63,16 @@ const Navbar = ({ modals, setModals }) => {
     <motion.div id="navbar" className="section">
       <div className="container">
         <div className="buttons">
+          {/* Router Nav Items */}
+          <div className="nav-items">
+            <Button
+              alt
+              id="home-button"
+              text="Home"
+              Icon={BsFillHouseDoorFill}
+            />
+          </div>
+
           {/* Dropdown */}
 
           <Dropdown text="Actions" Icon={BsLightningFill}>
@@ -95,16 +105,6 @@ const Navbar = ({ modals, setModals }) => {
               Icon={BsFileEarmarkMinus}
             />
           </Dropdown>
-
-          {/* Router Nav Items */}
-          <div className="nav-items">
-            <Button
-              alt
-              id="home-button"
-              text="Home"
-              Icon={BsFillHouseDoorFill}
-            />
-          </div>
 
           {/* <div className="profile-info">
           <div className="name">Account</div>

@@ -72,6 +72,32 @@ const EnterPostIdModal = ({ modals, setModals }) => {
         break;
       case "edit":
         console.log("Editing Post, from Enter ID Modal");
+        let auxEditPost = null;
+        posts.forEach((post) => {
+          if (post.id === parseInt(idState)) {
+            auxEditPost = post;
+          }
+        });
+
+        //If Post Exists
+        if (auxEditPost !== null) {
+          setModals({
+            ...modals,
+            enterPostId: { ...enterPostId, state: false },
+            addPost: { post: auxEditPost, state: true, action: "edit" },
+          });
+        } else {
+          setModals({
+            ...modals,
+            enterPostId: { ...enterPostId, state: false },
+            message: {
+              state: true,
+              type: "error",
+              text: `Post ${idState} doesn't exist`,
+            },
+          });
+        }
+
         break;
       case "view":
         console.log("Viewing Post, from Enter ID Modal");

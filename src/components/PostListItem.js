@@ -41,7 +41,11 @@ const PostListItem = ({ postInfo, i, setModals, modals }) => {
 
   //Handle Edit Post
   const handleEdit = () => {
-    console.log("Handle Edit Post");
+    console.log("Handle Edit Post: From PostListItem");
+    setModals({
+      ...modals,
+      addPost: { state: true, post: postInfo, action: "edit" },
+    });
   };
   //Handle View Post
   const handleView = () => {

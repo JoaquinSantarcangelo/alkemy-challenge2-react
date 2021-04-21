@@ -19,7 +19,7 @@ const App = () => {
   const [modals, setModals] = useState({
     currentPostId: null,
     viewPost: { state: false, post: {} },
-    addPost: { state: false, post: {} },
+    addPost: { state: false, post: {}, action: "" },
     enterPostId: { state: false, action: "" },
     message: { state: false, type: "", text: "" },
   });
