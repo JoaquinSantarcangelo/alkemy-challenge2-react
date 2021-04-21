@@ -1,9 +1,9 @@
 import React from "react";
 import { RiCloseFill } from "react-icons/ri";
 
-const CloseButton = () => {
+const CloseButton = ({ onClick }) => {
   return (
-    <div className="close-button">
+    <div onClick={() => onClick && onClick()} className="close-button">
       <RiCloseFill />
     </div>
   );

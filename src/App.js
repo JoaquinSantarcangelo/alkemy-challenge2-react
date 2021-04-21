@@ -29,25 +29,33 @@ const App = () => {
 
       {/* View Post Modal */}
       <AnimatePresence>
-        {false && <ViewPostModal setModals={setModals} />}
+        {modals.viewPost.state && (
+          <ViewPostModal modals={modals} setModals={setModals} />
+        )}
       </AnimatePresence>
 
       {/* Add Post Modal */}
       <AnimatePresence>
-        {false && <AddPostModal setModals={setModals} />}
+        {modals.addPost.state && (
+          <AddPostModal modals={modals} setModals={setModals} />
+        )}
       </AnimatePresence>
 
       {/* Enter Post ID Modal */}
       <AnimatePresence>
-        {false && <EnterPostIdModal setModals={setModals} />}
+        {modals.enterPostId.state && (
+          <EnterPostIdModal modals={modals} setModals={setModals} />
+        )}
       </AnimatePresence>
 
       {/* Error Modal */}
       <AnimatePresence>
-        {false && <ErrorModal setModals={setModals} />}
+        {modals.error.state && (
+          <ErrorModal modals={modals} setModals={setModals} />
+        )}
       </AnimatePresence>
 
-      <Navbar />
+      <Navbar modals={modals} setModals={setModals} />
       <Hero />
       <Home />
     </div>

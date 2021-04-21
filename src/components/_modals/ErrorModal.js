@@ -2,17 +2,23 @@ import React from "react";
 
 //Elements
 import CloseButton from "../_elements/CloseButton";
-import Button from "../_elements/Button";
+import Modal from "../_elements/Modal";
 
-const ErrorModal = () => {
+const ErrorModal = ({ modals, setModals }) => {
+  const { error } = modals;
+
+  //Handle Close
+  const handleClose = () => {
+    setModals({ ...modals, error: { ...error, state: false } });
+  };
+
   return (
-    <div className="modal" id="error-modal">
-      <div className="card">
-        <CloseButton />
+    <Modal onClose={handleClose} id="error-modal">
+      <>
         <div className="title">Error!</div>
         <div className="text">Error tatatattata</div>
-      </div>
-    </div>
+      </>
+    </Modal>
   );
 };
 

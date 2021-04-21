@@ -23,7 +23,7 @@ const variants = {
   exit: { opacity: 0 },
 };
 
-const Navbar = () => {
+const Navbar = ({ modals, setModals }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdown = () => {
@@ -32,6 +32,7 @@ const Navbar = () => {
 
   const addPost = () => {
     console.log("Adding Post: From Navbar");
+    setModals({ ...modals, addPost: { ...modals.addPost, state: true } });
   };
 
   const editPost = () => {

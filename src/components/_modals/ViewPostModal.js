@@ -2,12 +2,18 @@ import React from "react";
 
 //Elements
 import CloseButton from "../_elements/CloseButton";
+import Modal from "../_elements/Modal";
 
-const ViewPostModal = () => {
+const ViewPostModal = ({ setModals, modals }) => {
+  const { viewPost } = modals;
+
+  const handleClose = () => {
+    setModals({ ...modals, viewPost: { ...viewPost, state: false } });
+  };
+
   return (
-    <div className="modal">
-      <div className="card">
-        <CloseButton />
+    <Modal onClose={handleClose} id="view-post-modal">
+      <>
         <div className="title">Post Title</div>
         <div className="text">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
@@ -18,8 +24,8 @@ const ViewPostModal = () => {
           aliquam corporis ullam id nam quae nemo, veniam error dolore
           reiciendis officiis culpa fuga suscipit!
         </div>
-      </div>
-    </div>
+      </>
+    </Modal>
   );
 };
 
