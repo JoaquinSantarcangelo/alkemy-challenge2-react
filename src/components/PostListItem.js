@@ -7,7 +7,7 @@ import Button from "../components/_elements/Button";
 //Icons
 import { BsDashCircleFill, BsPencilSquare, BsEyeFill } from "react-icons/bs";
 
-const PostListItem = ({ postInfo, i }) => {
+const PostListItem = ({ postInfo, i, setModals, modals }) => {
   //Framer Motion Variants
   const variants = {
     hidden: { opacity: 0 },
@@ -18,6 +18,14 @@ const PostListItem = ({ postInfo, i }) => {
   //Handle Delete Post
   const handleDelete = () => {
     console.log("Handle Delete Post");
+    setModals({
+      ...modals,
+      message: {
+        state: true,
+        type: "sucess",
+        text: "Post deleted successfully",
+      },
+    });
   };
   //Handle Edit Post
   const handleEdit = () => {

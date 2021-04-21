@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
+import Scroll from "react-scroll";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -265,21 +266,26 @@ const fakePosts = [
 ];
 
 const variantsContainer = {
-  hidden: { height: "90vh" },
+  hidden: { height: "99vh" },
   visible: {
-    height: "fit-content",
+    height: "100%",
     transition: { ease: "easeInOut", when: "beforeChildren" },
   },
-  exit: { height: "90vh" },
+  exit: { height: "99vh" },
 };
 
-const Home = () => {
+const Home = ({ setModals, modals }) => {
   const [filterLimit, setFilterLimit] = useState(4);
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
+  var scroll = Scroll.animateScroll;
 
   const loadMorePost = () => {
+    //Add 5 items to state limit
     setFilterLimit(filterLimit + 5);
+
+    //Scroll to bottom
+    scroll.scrollToBottom();
   };
 
   //Fetching Posts
@@ -302,7 +308,15 @@ const Home = () => {
           <AnimatePresence>
             {posts.map((post, i) => {
               if (i < filterLimit) {
-                return <PostListItem key={i} i={i} postInfo={post} />;
+                return (
+                  <PostListItem
+                    modals={modals}
+                    setModals={setModals}
+                    key={i}
+                    i={i}
+                    postInfo={post}
+                  />
+                );
               }
             })}
           </AnimatePresence>

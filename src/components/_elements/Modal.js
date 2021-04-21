@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
-
+import ClickAwayListener from "react-click-away-listener";
 import CloseButton from "../_elements/CloseButton";
 
 const variants = {
@@ -19,10 +19,12 @@ const Modal = ({ id, children, onClose }) => {
       className="modal"
       id={id}
     >
-      <div className="card">
-        <CloseButton onClick={onClose} />
-        {children}
-      </div>
+      <ClickAwayListener onClickAway={() => onClose()}>
+        <div className="card">
+          <CloseButton onClick={onClose} />
+          {children}
+        </div>
+      </ClickAwayListener>
     </motion.div>
   );
 };

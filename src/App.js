@@ -12,7 +12,7 @@ import Home from "./components/_containers/Home";
 import AddPostModal from "./components/_modals/AddPostModal";
 import ViewPostModal from "./components/_modals/ViewPostModal";
 import EnterPostIdModal from "./components/_modals/EnterPostIdModal";
-import ErrorModal from "./components/_modals/ErrorModal";
+import MessageModal from "./components/_modals/MessageModal";
 
 const App = () => {
   //Modals State
@@ -21,7 +21,7 @@ const App = () => {
     viewPost: { state: false, post: {} },
     addPost: { state: false, post: {} },
     enterPostId: { state: false, action: "" },
-    error: { state: false, text: {} },
+    message: { state: false, type: "", text: "" },
   });
 
   return (
@@ -49,16 +49,16 @@ const App = () => {
         )}
       </AnimatePresence>
 
-      {/* Error Modal */}
+      {/* MessageModal Modal */}
       <AnimatePresence>
-        {modals.error.state && (
-          <ErrorModal modals={modals} setModals={setModals} />
+        {modals.message.state && (
+          <MessageModal modals={modals} setModals={setModals} />
         )}
       </AnimatePresence>
 
       <Navbar modals={modals} setModals={setModals} />
       <Hero />
-      <Home />
+      <Home modals={modals} setModals={setModals} />
     </div>
   );
 };

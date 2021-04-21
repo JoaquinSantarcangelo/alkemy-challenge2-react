@@ -63,7 +63,8 @@ const Navbar = ({ modals, setModals }) => {
     <motion.div id="navbar" className="section">
       <div className="container">
         <div className="buttons">
-          {/* Dropdwon */}
+          {/* Dropdown */}
+          
           <Dropdown text="Actions" Icon={BsLightningFill}>
             <Button
               onClick={addPost}
