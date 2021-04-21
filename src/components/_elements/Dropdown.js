@@ -16,19 +16,20 @@ const variants = {
   }),
 };
 
-const Dropdown = ({ children, text, Icon, disabled }) => {
+const Dropdown = ({ children, text, Icon, disabled, id, custom }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <div className={disabled ? "dropdown disabled" : "dropdown"}>
+    <div id={id || "dropdown"} className={disabled ? "dropdown disabled" : "dropdown"}>
       <Button
         onClick={handleDropdown}
         id="main-button"
         text={text}
         Icon={Icon}
+        custom={custom || 1}
       />
       <AnimatePresence exitBeforeEnter>
         {dropdownOpen && (

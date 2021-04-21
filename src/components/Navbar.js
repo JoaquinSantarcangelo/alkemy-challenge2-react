@@ -21,7 +21,10 @@ const Navbar = ({ modals, setModals }) => {
   //Add Post
   const addPost = () => {
     console.log("Adding Post: From Navbar");
-    setModals({ ...modals, addPost: { ...modals.addPost, state: true } });
+    setModals({
+      ...modals,
+      addPost: { ...modals.addPost, state: true, action: "add" },
+    });
   };
 
   //Edit Post
@@ -69,6 +72,7 @@ const Navbar = ({ modals, setModals }) => {
           id="profile-info"
           text="Account"
           Icon={FaUserCircle}
+          custom={6}
         ></Dropdown>
         <div className="buttons">
           {/* Router Nav Items */}
@@ -78,12 +82,13 @@ const Navbar = ({ modals, setModals }) => {
               id="home-button"
               text="Home"
               Icon={BsFillHouseDoorFill}
+              custom={6}
             />
           </div>
 
           {/* Dropdown */}
 
-          <Dropdown text="Actions" Icon={BsLightningFill}>
+          <Dropdown custom={6} text="Actions" Icon={BsLightningFill}>
             <Button
               onClick={addPost}
               custom={1}

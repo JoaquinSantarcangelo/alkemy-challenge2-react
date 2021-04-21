@@ -6,7 +6,7 @@ const variants = {
   visible: (custom) => ({
     y: 0,
     opacity: 1,
-    transition: { duration: 0.2, delay: 2 + custom * 0.1 || 0 },
+    transition: { duration: 0.2, delay: custom * 0.1 || 0 },
   }),
   exit: (custom) => ({
     y: -30,
