@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { deletePost, updatePost } from "../actions/posts";
+import { deletePost } from "../actions/posts";
 
 //Elements
 import Button from "../components/_elements/Button";

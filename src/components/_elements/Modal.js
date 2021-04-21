@@ -9,6 +9,12 @@ const variants = {
   exit: { opacity: 0 },
 };
 
+const variantsCard = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.2 } },
+  exit: { y: -20, opacity: 0 },
+};
+
 const Modal = ({ id, children, onClose }) => {
   return (
     <motion.div
@@ -20,10 +26,16 @@ const Modal = ({ id, children, onClose }) => {
       id={id}
     >
       <ClickAwayListener onClickAway={() => onClose()}>
-        <div className="card">
+        <motion.div
+          variants={variantsCard}
+          initial="hidden"
+          animate="visible"
+          exit="exit"
+          className="card"
+        >
           <CloseButton onClick={onClose} />
           {children}
-        </div>
+        </motion.div>
       </ClickAwayListener>
     </motion.div>
   );

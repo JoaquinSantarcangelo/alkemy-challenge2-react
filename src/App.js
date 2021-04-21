@@ -25,7 +25,7 @@ const App = () => {
   });
 
   return (
-    <div>
+    <div className="app">
       {/* ---- Modals ---- */}
 
       {/* View Post Modal */}

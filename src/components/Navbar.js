@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
 //Elements
@@ -14,6 +14,8 @@ import {
   BsEyeFill,
   BsFillHouseDoorFill,
 } from "react-icons/bs";
+
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = ({ modals, setModals }) => {
   //Add Post
@@ -62,6 +64,12 @@ const Navbar = ({ modals, setModals }) => {
   return (
     <motion.div id="navbar" className="section">
       <div className="container">
+        <Dropdown
+          disabled
+          id="profile-info"
+          text="Account"
+          Icon={FaUserCircle}
+        ></Dropdown>
         <div className="buttons">
           {/* Router Nav Items */}
           <div className="nav-items">
@@ -105,10 +113,6 @@ const Navbar = ({ modals, setModals }) => {
               Icon={BsFileEarmarkMinus}
             />
           </Dropdown>
-
-          {/* <div className="profile-info">
-          <div className="name">Account</div>
-        </div> */}
         </div>
       </div>
     </motion.div>

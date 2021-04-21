@@ -275,7 +275,7 @@ const variantsContainer = {
 };
 
 const Home = ({ setModals, modals }) => {
-  const [filterLimit, setFilterLimit] = useState(4);
+  const [filterLimit, setFilterLimit] = useState(10);
   const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
   var scroll = Scroll.animateScroll;
@@ -317,7 +317,7 @@ const Home = ({ setModals, modals }) => {
                     postInfo={post}
                   />
                 );
-              }
+              } else return;
             })}
           </AnimatePresence>
         </div>

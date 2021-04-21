@@ -2,11 +2,10 @@ import React, { useState } from "react";
 
 // Redux
 import { useDispatch, useSelector } from "react-redux";
-import { deletePost, updatePost } from "../../actions/posts";
+import { deletePost } from "../../actions/posts";
 
 //Elements
 import Button from "../_elements/Button";
-import CloseButton from "../_elements/CloseButton";
 import Modal from "../_elements/Modal";
 
 //Icons
@@ -126,6 +125,8 @@ const EnterPostIdModal = ({ modals, setModals }) => {
             },
           });
         }
+        break;
+      default:
         break;
     }
   };

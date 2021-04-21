@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { createPost, updatePost } from "../../actions/posts";
 
 //Elements
@@ -13,7 +13,6 @@ import { RiCheckFill } from "react-icons/ri";
 
 const AddPostModal = ({ modals, setModals }) => {
   // Global State (Redux)
-  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
   //Hooks
@@ -37,12 +36,12 @@ const AddPostModal = ({ modals, setModals }) => {
 
   //Validation
   const validation = () => {
-    if (title == "") {
+    if (title === "") {
       setError("Please enter a title");
       return false;
     }
 
-    if (text == "") {
+    if (text === "") {
       setError("Please enter a text");
       return false;
     }
@@ -118,7 +117,7 @@ const AddPostModal = ({ modals, setModals }) => {
             ? `Editing Post ID:${addPost.post.id}`
             : "Adding New Post"}
         </div>
-        {error != "" && <div className="error">Error: {error}</div>}
+        {error !== "" && <div className="error">Error: {error}</div>}
         <div className="form">
           <input
             value={title}

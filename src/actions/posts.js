@@ -1,10 +1,4 @@
-import {
-  GET_ALL_POSTS,
-  GET_POST,
-  CREATE_POST,
-  UPDATE_POST,
-  DELETE_POST,
-} from "./types";
+import { GET_ALL_POSTS, CREATE_POST, UPDATE_POST, DELETE_POST } from "./types";
 
 import PostService from "../services/PostServices";
 

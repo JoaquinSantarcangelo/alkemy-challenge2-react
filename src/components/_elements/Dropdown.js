@@ -16,14 +16,14 @@ const variants = {
   }),
 };
 
-const Dropdown = ({ children, text, Icon }) => {
+const Dropdown = ({ children, text, Icon, disabled }) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const handleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <div className="dropdown">
+    <div className={disabled ? "dropdown disabled" : "dropdown"}>
       <Button
         onClick={handleDropdown}
         id="main-button"

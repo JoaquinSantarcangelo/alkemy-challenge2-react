@@ -2,12 +2,14 @@ import React from "react";
 import { motion } from "framer-motion";
 
 const variants = {
-  hidden: { opacity: 0 },
+  hidden: { y: -30, opacity: 0 },
   visible: (custom) => ({
+    y: 0,
     opacity: 1,
-    transition: { duration: 0.2, delay: custom * 0.1 || 0 },
+    transition: { duration: 0.2, delay: 2 + custom * 0.1 || 0 },
   }),
   exit: (custom) => ({
+    y: -30,
     opacity: 0,
     transition: { delay: custom * 0.1 || 0 },
   }),
