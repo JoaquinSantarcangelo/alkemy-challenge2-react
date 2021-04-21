@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // Redux
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deletePost, updatePost } from "../../actions/posts";
 
 //Elements
@@ -15,9 +15,10 @@ import { FaSearch } from "react-icons/fa";
 const EnterPostIdModal = ({ modals, setModals }) => {
   //Redux
   const dispatch = useDispatch();
+  const posts = useSelector((state) => state.posts);
 
   //Hooks
-  const [id, setId] = useState("");
+  const [idState, setIdState] = useState("");
 
   const { enterPostId } = modals;
 
@@ -32,14 +33,8 @@ const EnterPostIdModal = ({ modals, setModals }) => {
       case "delete":
         console.log("Deleting Post, from Enter ID Modal");
 
-        dispatch(deletePost(parseInt(id))).then((res) => {
+        dispatch(deletePost(parseInt(idState))).then((res) => {
           //If ID was Valid
-          console.log(
-            res.config.url.substring(
-              res.config.url.length - 3,
-              res.config.url.length
-            )
-          );
           if (
             res.config.url.substring(
               res.config.url.length - 3,
@@ -55,7 +50,7 @@ const EnterPostIdModal = ({ modals, setModals }) => {
               message: {
                 state: true,
                 type: "error",
-                text: `Post ${id} doesn't exist`,
+                text: `Post ${idState} doesn't exist`,
               },
             });
           } else {
@@ -68,7 +63,7 @@ const EnterPostIdModal = ({ modals, setModals }) => {
               message: {
                 state: true,
                 type: "message",
-                text: `Post ${id} deleted successfully`,
+                text: `Post ${idState} deleted successfully`,
               },
             });
           }
@@ -78,8 +73,33 @@ const EnterPostIdModal = ({ modals, setModals }) => {
       case "edit":
         console.log("Editing Post, from Enter ID Modal");
         break;
-      case "View":
+      case "view":
         console.log("Viewing Post, from Enter ID Modal");
+        let auxPost = null;
+        posts.forEach((post) => {
+          if (post.id === parseInt(idState)) {
+            auxPost = post;
+          }
+        });
+
+        //If Post Exists
+        if (auxPost !== null) {
+          setModals({
+            ...modals,
+            enterPostId: { ...enterPostId, state: false },
+            viewPost: { post: auxPost, state: true },
+          });
+        } else {
+          setModals({
+            ...modals,
+            enterPostId: { ...enterPostId, state: false },
+            message: {
+              state: true,
+              type: "error",
+              text: `Post ${idState} doesn't exist`,
+            },
+          });
+        }
         break;
     }
   };
@@ -92,8 +112,8 @@ const EnterPostIdModal = ({ modals, setModals }) => {
           placeholder="Post ID"
           id="post-id"
           type="text"
-          value={id}
-          onChange={(e) => setId(e.target.value)}
+          value={idState}
+          onChange={(e) => setIdState(e.target.value)}
         />
         <Button onClick={handleSearch} Icon={FaSearch} text="Search" />
       </>

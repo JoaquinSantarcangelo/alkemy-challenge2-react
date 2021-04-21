@@ -10,20 +10,14 @@ const ViewPostModal = ({ setModals, modals }) => {
     setModals({ ...modals, viewPost: { ...viewPost, state: false } });
   };
 
+  const capitalize = (text) => {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+  };
+
   return (
     <Modal onClose={handleClose} id="view-post-modal">
-      <>
-        <div className="title">Post Title</div>
-        <div className="text">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur
-          vitae reiciendis eos provident. Sequi necessitatibus quibusdam ut
-          doloribus. Cumque consequuntur tempora amet aliquid beatae minus, vel
-          ullam hic eum temporibus. Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Iure in molestiae at aspernatur sequi expedita
-          aliquam corporis ullam id nam quae nemo, veniam error dolore
-          reiciendis officiis culpa fuga suscipit!
-        </div>
-      </>
+      <div className="title">{capitalize(viewPost.post.title)}</div>
+      <div className="text">{capitalize(viewPost.post.body)}</div>
     </Modal>
   );
 };
