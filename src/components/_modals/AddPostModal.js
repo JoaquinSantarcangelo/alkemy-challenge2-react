@@ -88,7 +88,7 @@ const AddPostModal = ({ modals, setModals }) => {
     let validated = await validation();
 
     if (validated) {
-      let editedPost = { ...addPost.post, title: title, text: text };
+      let editedPost = { ...addPost.post, title: title, body: text };
       dispatch(updatePost(addPost.post.id, editedPost)).then(() => {
         console.log("Edited Post: From dispatch callback");
 
