@@ -15,12 +15,12 @@ const MessageModal = ({ modals, setModals }) => {
   return (
     <Modal onClose={handleClose} id="message-modal">
       <div className="title">
-        {message.type == "error" ? "Error" : "Message"}
+        {message.type === "message" ? "Message" : "Error"}
       </div>
       <div className="text">{message.text}</div>
       <Button
         onClick={handleClose}
-        text={message.type == "error" ? "Great!" : "Close window"}
+        text={message.type === "message" ? "Great!" : "Close window"}
       />
     </Modal>
   );

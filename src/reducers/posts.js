@@ -1,6 +1,5 @@
 import {
   GET_ALL_POSTS,
-  GET_POST,
   CREATE_POST,
   UPDATE_POST,
   DELETE_POST,
@@ -14,10 +13,8 @@ function postReducer(posts = initialState, action) {
   switch (type) {
     case GET_ALL_POSTS:
       return payload;
-      break;
     case CREATE_POST:
       return [...posts, payload];
-      break;
     case UPDATE_POST:
       return posts.map((post) => {
         if (post.id === payload.id) {
@@ -29,10 +26,8 @@ function postReducer(posts = initialState, action) {
           return post;
         }
       });
-      break;
     case DELETE_POST:
       return posts.filter(({ id }) => id !== payload.id);
-      break;
     default:
       return posts;
   }
