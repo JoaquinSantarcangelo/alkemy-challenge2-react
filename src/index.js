@@ -16,11 +16,9 @@ import "./sass/index.sass";
 import "./sass/components/_containers/Home.sass";
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById("root")
 );
 

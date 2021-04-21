@@ -290,7 +290,11 @@ const Home = ({ setModals, modals }) => {
 
   //Fetching Posts
   useEffect(() => {
-    dispatch(getAllPosts());
+    const fetchPosts = () => {
+      return dispatch(getAllPosts());
+    };
+
+    fetchPosts();
   }, []);
 
   return (
