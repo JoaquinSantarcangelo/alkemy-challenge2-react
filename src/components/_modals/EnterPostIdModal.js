@@ -32,19 +32,46 @@ const EnterPostIdModal = ({ modals, setModals }) => {
       case "delete":
         console.log("Deleting Post, from Enter ID Modal");
 
-        dispatch(deletePost(parseInt(id))).then(() => {
-          setModals({
-            ...modals,
-            enterPostId: {
-              ...enterPostId,
-              state: false,
-            },
-            message: {
-              state: true,
-              type: "message",
-              text: "Post deleted successfully",
-            },
-          });
+        dispatch(deletePost(parseInt(id))).then((res) => {
+          //If ID was Valid
+          console.log(
+            res.config.url.substring(
+              res.config.url.length - 3,
+              res.config.url.length
+            )
+          );
+          if (
+            res.config.url.substring(
+              res.config.url.length - 3,
+              res.config.url.length
+            ) === "NaN"
+          ) {
+            setModals({
+              ...modals,
+              enterPostId: {
+                ...enterPostId,
+                state: false,
+              },
+              message: {
+                state: true,
+                type: "error",
+                text: `Post ${id} doesn't exist`,
+              },
+            });
+          } else {
+            setModals({
+              ...modals,
+              enterPostId: {
+                ...enterPostId,
+                state: false,
+              },
+              message: {
+                state: true,
+                type: "message",
+                text: `Post ${id} deleted successfully`,
+              },
+            });
+          }
         });
 
         break;

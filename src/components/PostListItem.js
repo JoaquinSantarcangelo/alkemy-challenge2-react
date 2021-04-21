@@ -27,6 +27,7 @@ const PostListItem = ({ postInfo, i, setModals, modals }) => {
     console.log("Handle Delete Post");
 
     dispatch(deletePost(postInfo.id)).then((res) => {
+      console.log(res)
       setModals({
         ...modals,
         message: {
