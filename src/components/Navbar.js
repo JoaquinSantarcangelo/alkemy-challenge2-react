@@ -19,8 +19,14 @@ import { FiLogOut } from "react-icons/fi";
 
 const variants = {
   hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { ease: "easeInOut" } },
-  exit: { opacity: 0 },
+  visible: (custom) => ({
+    opacity: 1,
+    transition: { duration: 0.3, delay: custom * 0.1 },
+  }),
+  exit: (custom) => ({
+    opacity: 0,
+    transition: { duration: 0.3, delay: custom * 0.1 },
+  }),
 };
 
 const Navbar = ({ modals, setModals }) => {
@@ -74,7 +80,7 @@ const Navbar = ({ modals, setModals }) => {
   };
 
   return (
-    <div id="navbar" className="section">
+    <motion.div variants={variants} initial="" id="navbar" className="section">
       <div className="container">
         <div className="buttons">
           <div className="dropdown">
@@ -88,6 +94,7 @@ const Navbar = ({ modals, setModals }) => {
               {dropdownOpen && (
                 <motion.div
                   variants={variants}
+                  custom={1}
                   initial="hidden"
                   animate="visible"
                   exit="exit"
@@ -95,24 +102,28 @@ const Navbar = ({ modals, setModals }) => {
                 >
                   <Button
                     onClick={addPost}
+                    custom={1}
                     id="main-button"
                     text="Add Post"
                     Icon={BsPlus}
                   />
                   <Button
                     onClick={viewPost}
+                    custom={2}
                     id="main-button"
                     text="View Post"
                     Icon={BsEyeFill}
                   />
                   <Button
                     onClick={editPost}
+                    custom={3}
                     id="main-button"
                     text="Edit Post"
                     Icon={BsPencilSquare}
                   />
                   <Button
                     onClick={deletePost}
+                    custom={4}
                     id="main-button"
                     text="Delete Post"
                     Icon={BsFileEarmarkMinus}
@@ -134,7 +145,7 @@ const Navbar = ({ modals, setModals }) => {
           <div className="name">Account</div>
         </div> */}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 //Elements
-import CloseButton from "../_elements/CloseButton";
 import Modal from "../_elements/Modal";
 
 const ErrorModal = ({ modals, setModals }) => {
