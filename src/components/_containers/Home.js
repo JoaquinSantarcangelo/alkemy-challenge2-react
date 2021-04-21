@@ -302,7 +302,7 @@ const Home = () => {
           <AnimatePresence>
             {posts.map((post, i) => {
               if (i < filterLimit) {
-                return <PostListItem i={i} postInfo={post} />;
+                return <PostListItem key={i} i={i} postInfo={post} />;
               }
             })}
           </AnimatePresence>

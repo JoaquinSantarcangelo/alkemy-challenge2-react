@@ -17,9 +17,10 @@ import ErrorModal from "./components/_modals/ErrorModal";
 const App = () => {
   //Modals State
   const [modals, setModals] = useState({
+    currentPostId: null,
     viewPost: { state: false, post: {} },
     addPost: { state: false, post: {} },
-    enterPostId: { state: false, id: 1 },
+    enterPostId: { state: false, action: "" },
     error: { state: false, text: {} },
   });
 

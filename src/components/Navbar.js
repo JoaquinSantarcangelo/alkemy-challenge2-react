@@ -30,21 +30,47 @@ const Navbar = ({ modals, setModals }) => {
     setDropdownOpen(!dropdownOpen);
   };
 
+  //Add Post
   const addPost = () => {
     console.log("Adding Post: From Navbar");
     setModals({ ...modals, addPost: { ...modals.addPost, state: true } });
   };
 
+  //Edit Post
   const editPost = () => {
     console.log("Editing Post: From Navbar");
+
+    //Opens Enter ID Modal if !Current Post
+    if (modals.currentPostId == null) {
+      setModals({
+        ...modals,
+        enterPostId: { action: "edit", state: true },
+      });
+    }
   };
 
+  //View Post
   const viewPost = () => {
     console.log("Viewing Post: From Navbar");
+    //Opens Enter ID Modal if !Current Post
+    if (modals.currentPostId == null) {
+      setModals({
+        ...modals,
+        enterPostId: { action: "view", state: true },
+      });
+    }
   };
 
+  //DeletePost
   const deletePost = () => {
     console.log("Deleting Post: From Navbar");
+    //Opens Enter ID Modal if !Current Post
+    if (modals.currentPostId == null) {
+      setModals({
+        ...modals,
+        enterPostId: { action: "delete", state: true },
+      });
+    }
   };
 
   return (
@@ -104,10 +130,9 @@ const Navbar = ({ modals, setModals }) => {
             />
           </div>
         </div>
-        <div className="profile-info">
-          <div className="profile-image"></div>
-          <div className="name">User Name</div>
-        </div>
+        {/* <div className="profile-info">
+          <div className="name">Account</div>
+        </div> */}
       </div>
     </div>
   );

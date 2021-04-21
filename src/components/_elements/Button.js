@@ -14,7 +14,7 @@ const Button = ({ id, Icon, text, alt, onClick }) => {
       initial="hidden"
       animate="visible"
       exit="exit"
-      onClick={() => onClick(id)}
+      onClick={() => onClick && onClick()}
       id={id}
       className={alt ? "button alt" : "button"}
     >
