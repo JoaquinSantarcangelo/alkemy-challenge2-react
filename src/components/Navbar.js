@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
 //Elements
 import Button from "./_elements/Button";
@@ -15,27 +15,7 @@ import {
   BsFillHouseDoorFill,
 } from "react-icons/bs";
 
-import { FiLogOut } from "react-icons/fi";
-
-const variants = {
-  hidden: { opacity: 0 },
-  visible: (custom) => ({
-    opacity: 1,
-    transition: { duration: 0.3, delay: custom * 0.1 },
-  }),
-  exit: (custom) => ({
-    opacity: 0,
-    transition: { duration: 0.3, delay: custom * 0.1 },
-  }),
-};
-
 const Navbar = ({ modals, setModals }) => {
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-
-  const handleDropdown = () => {
-    setDropdownOpen(!dropdownOpen);
-  };
-
   //Add Post
   const addPost = () => {
     console.log("Adding Post: From Navbar");
@@ -80,58 +60,42 @@ const Navbar = ({ modals, setModals }) => {
   };
 
   return (
-    <motion.div variants={variants} initial="" id="navbar" className="section">
+    <motion.div id="navbar" className="section">
       <div className="container">
         <div className="buttons">
-          <div className="dropdown">
+          {/* Dropdwon */}
+          <Dropdown text="Actions" Icon={BsLightningFill}>
             <Button
-              onClick={handleDropdown}
+              onClick={addPost}
+              custom={1}
               id="main-button"
-              text="Actions"
-              Icon={BsLightningFill}
+              text="Add Post"
+              Icon={BsPlus}
             />
-            <AnimatePresence exitBeforeEnter>
-              {dropdownOpen && (
-                <motion.div
-                  variants={variants}
-                  custom={1}
-                  initial="hidden"
-                  animate="visible"
-                  exit="exit"
-                  className="drop-items"
-                >
-                  <Button
-                    onClick={addPost}
-                    custom={1}
-                    id="main-button"
-                    text="Add Post"
-                    Icon={BsPlus}
-                  />
-                  <Button
-                    onClick={viewPost}
-                    custom={2}
-                    id="main-button"
-                    text="View Post"
-                    Icon={BsEyeFill}
-                  />
-                  <Button
-                    onClick={editPost}
-                    custom={3}
-                    id="main-button"
-                    text="Edit Post"
-                    Icon={BsPencilSquare}
-                  />
-                  <Button
-                    onClick={deletePost}
-                    custom={4}
-                    id="main-button"
-                    text="Delete Post"
-                    Icon={BsFileEarmarkMinus}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
+            <Button
+              onClick={viewPost}
+              custom={2}
+              id="main-button"
+              text="View Post"
+              Icon={BsEyeFill}
+            />
+            <Button
+              onClick={editPost}
+              custom={3}
+              id="main-button"
+              text="Edit Post"
+              Icon={BsPencilSquare}
+            />
+            <Button
+              onClick={deletePost}
+              custom={4}
+              id="main-button"
+              text="Delete Post"
+              Icon={BsFileEarmarkMinus}
+            />
+          </Dropdown>
+          
+          {/* Router Nav Items */}
           <div className="nav-items">
             <Button
               alt
@@ -140,10 +104,11 @@ const Navbar = ({ modals, setModals }) => {
               Icon={BsFillHouseDoorFill}
             />
           </div>
-        </div>
-        {/* <div className="profile-info">
+          
+          {/* <div className="profile-info">
           <div className="name">Account</div>
         </div> */}
+        </div>
       </div>
     </motion.div>
   );

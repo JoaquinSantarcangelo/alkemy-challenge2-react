@@ -10,7 +10,7 @@ const variants = {
 const variantsContainer = {
   hidden: { height: "10vh" },
   visible: {
-    height: "40vh",
+    height: "32vh",
     transition: { ease: "easeInOut", when: "beforeChildren" },
   },
   exit: { height: "20vh" },
