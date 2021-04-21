@@ -8,9 +8,9 @@ const variants = {
 };
 
 const variantsContainer = {
-  hidden: { height: "10vh" },
+  hidden: { maxHeight: "1vh" },
   visible: {
-    height: "32vh",
+    maxHeight: "32vh",
     transition: { ease: "easeInOut", when: "beforeChildren" },
   },
   exit: { height: "20vh" },

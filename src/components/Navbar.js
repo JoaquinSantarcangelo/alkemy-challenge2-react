@@ -64,7 +64,7 @@ const Navbar = ({ modals, setModals }) => {
       <div className="container">
         <div className="buttons">
           {/* Dropdown */}
-          
+
           <Dropdown text="Actions" Icon={BsLightningFill}>
             <Button
               onClick={addPost}
@@ -95,7 +95,7 @@ const Navbar = ({ modals, setModals }) => {
               Icon={BsFileEarmarkMinus}
             />
           </Dropdown>
-          
+
           {/* Router Nav Items */}
           <div className="nav-items">
             <Button
@@ -105,7 +105,7 @@ const Navbar = ({ modals, setModals }) => {
               Icon={BsFillHouseDoorFill}
             />
           </div>
-          
+
           {/* <div className="profile-info">
           <div className="name">Account</div>
         </div> */}

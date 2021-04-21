@@ -1,4 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
+
+// Redux
+import { useDispatch } from "react-redux";
+import { deletePost, updatePost } from "../../actions/posts";
 
 //Elements
 import Button from "../_elements/Button";
@@ -9,6 +13,12 @@ import Modal from "../_elements/Modal";
 import { FaSearch } from "react-icons/fa";
 
 const EnterPostIdModal = ({ modals, setModals }) => {
+  //Redux
+  const dispatch = useDispatch();
+
+  //Hooks
+  const [id, setId] = useState("");
+
   const { enterPostId } = modals;
 
   //Handle Close
@@ -21,6 +31,22 @@ const EnterPostIdModal = ({ modals, setModals }) => {
     switch (enterPostId.action) {
       case "delete":
         console.log("Deleting Post, from Enter ID Modal");
+
+        dispatch(deletePost(parseInt(id))).then(() => {
+          setModals({
+            ...modals,
+            enterPostId: {
+              ...enterPostId,
+              state: false,
+            },
+            message: {
+              state: true,
+              type: "message",
+              text: "Post deleted successfully",
+            },
+          });
+        });
+
         break;
       case "edit":
         console.log("Editing Post, from Enter ID Modal");
@@ -35,7 +61,13 @@ const EnterPostIdModal = ({ modals, setModals }) => {
     <Modal onClose={handleClose} id="enter-post-id-modal">
       <>
         <div className="title">Please enter the Post ID: </div>
-        <input placeholder="Post ID" id="post-id" type="text" />
+        <input
+          placeholder="Post ID"
+          id="post-id"
+          type="text"
+          value={id}
+          onChange={(e) => setId(e.target.value)}
+        />
         <Button onClick={handleSearch} Icon={FaSearch} text="Search" />
       </>
     </Modal>

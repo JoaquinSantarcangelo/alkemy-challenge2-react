@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 
 // Redux
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deletePost, updatePost } from "../actions/posts";
 
 //Elements
@@ -13,7 +13,6 @@ import { BsDashCircleFill, BsPencilSquare, BsEyeFill } from "react-icons/bs";
 
 const PostListItem = ({ postInfo, i, setModals, modals }) => {
   //Redux
-  const posts = useSelector((state) => state.posts);
   const dispatch = useDispatch();
 
   //Framer Motion Variants
@@ -28,13 +27,12 @@ const PostListItem = ({ postInfo, i, setModals, modals }) => {
     console.log("Handle Delete Post");
 
     dispatch(deletePost(postInfo.id)).then((res) => {
-      console.log(res);
       setModals({
         ...modals,
         message: {
           state: true,
           type: "message",
-          text: "Post deleted successfully",
+          text: `Post ${postInfo.id} deleted successfully`,
         },
       });
     });

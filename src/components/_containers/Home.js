@@ -266,9 +266,9 @@ const fakePosts = [
 ];
 
 const variantsContainer = {
-  hidden: { height: "99vh" },
+  hidden: { minHeight: "99vh" },
   visible: {
-    height: "100%",
+    minHeight: "68vh",
     transition: { ease: "easeInOut", when: "beforeChildren" },
   },
   exit: { height: "99vh" },
