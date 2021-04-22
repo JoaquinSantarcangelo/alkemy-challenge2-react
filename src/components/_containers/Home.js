@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Scroll from "react-scroll";
+import ReactLoading from "react-loading";
 
 // Redux
 import { useSelector, useDispatch } from "react-redux";
@@ -310,6 +311,13 @@ const Home = ({ setModals, modals }) => {
         <h2 className="section-title">Post List</h2>
         <div className="post-list">
           <AnimatePresence>
+            {posts.length < 1 && (
+              <div className="loading">
+                <ReactLoading color="000" />
+              </div>
+            )}
+          </AnimatePresence>
+          <AnimatePresence>
             {posts.map((post, i) => {
               if (i < filterLimit) {
                 return (
@@ -325,18 +333,20 @@ const Home = ({ setModals, modals }) => {
             })}
           </AnimatePresence>
         </div>
-        <div className="load-more">
-          {filterLimit < fakePosts.length ? (
-            <Button
-              id="load-more"
-              onClick={loadMorePost}
-              Icon={BsPlus}
-              text="Load more"
-            />
-          ) : (
-            <div className="empty">No more posts</div>
-          )}
-        </div>
+        {posts.length > 0 && (
+          <div className="load-more">
+            {filterLimit < posts.length ? (
+              <Button
+                id="load-more"
+                onClick={loadMorePost}
+                Icon={BsPlus}
+                text="Load more"
+              />
+            ) : (
+              <div className="empty">No more posts</div>
+            )}
+          </div>
+        )}
       </div>
     </motion.div>
   );

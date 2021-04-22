@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const variants = {
@@ -21,7 +21,7 @@ const Hero = () => {
     <motion.div
       variants={variantsContainer}
       initial="hidden"
-      animate="visible"
+      animate={"visible"}
       exit="exit"
       className="section"
       id="hero"
@@ -43,6 +43,7 @@ const Hero = () => {
         animate="visible"
         exit="exit"
         className="background-image"
+        onLoad
       ></motion.div>
     </motion.div>
   );
